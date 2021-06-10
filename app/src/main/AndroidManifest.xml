@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DoransVault">
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".activity.AdicionarUsuarioActivity"></activity>
+        <activity android:name=".activity.AtualizarUsuarioActivity"></activity>
+
+
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
