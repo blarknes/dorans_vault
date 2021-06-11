@@ -14,6 +14,7 @@ import com.blarknes.doransvault.DAO.ContaDAO;
 import com.blarknes.doransvault.DAO.DatabaseManager;
 import com.blarknes.doransvault.R;
 import com.blarknes.doransvault.model.Conta;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements ContaAdapter.OnRe
     }
 
     private void configureActions() {
-        Button btnAdicionar = findViewById(R.id.adicionar);
+        FloatingActionButton btnAdicionar = findViewById(R.id.adicionar);
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

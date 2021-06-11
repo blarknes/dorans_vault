@@ -52,9 +52,8 @@ public class ContaAdapter extends RecyclerView.Adapter {
         Conta conta = contaList.get(i);
 
         holder.nick.setText(conta.getNick());
-        holder.login.setText(conta.getLogin());
-        holder.senha.setText(conta.getSenha());
-    }
+        /*holder.login.setText(conta.getLogin());
+        holder.senha.setText(conta.getSenha());*/    }
 
     @Override
     public int getItemCount() {
@@ -64,16 +63,16 @@ public class ContaAdapter extends RecyclerView.Adapter {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         final TextView nick;
-        final TextView login;
-        final TextView senha;
+        /*final TextView login;
+        final TextView senha;*/
 
         OnRecycleListener onRecycleListener;
 
         public ViewHolder(View view, OnRecycleListener onRecycleListener) {
             super(view);
             nick = (TextView) view.findViewById(R.id.nick);
-            login = (TextView) view.findViewById(R.id.login);
-            senha = (TextView) view.findViewById(R.id.senha);
+            /*login = (TextView) view.findViewById(R.id.login);
+            senha = (TextView) view.findViewById(R.id.senha);*/
 
             this.onRecycleListener = onRecycleListener;
             view.setOnClickListener(this);
