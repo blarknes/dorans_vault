@@ -10,24 +10,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blarknes.doransvault.R;
-import com.blarknes.doransvault.model.Usuario;
+import com.blarknes.doransvault.model.Conta;
 
 import java.util.List;
 
-public class UsuarioAdapter extends RecyclerView.Adapter {
+public class ContaAdapter extends RecyclerView.Adapter {
 
-    private List<Usuario> usuarioList;
+    private List<Conta> contaList;
     private Context contexto;
     private OnRecycleListener onRecycleListener;
 
-    public UsuarioAdapter(List<Usuario> usuarios, Context contexto, OnRecycleListener onRecycleListener) {
-        this.usuarioList = usuarios;
+    public ContaAdapter(List<Conta> contas, Context contexto, OnRecycleListener onRecycleListener) {
+        this.contaList = contas;
         this.contexto = contexto;
         this.onRecycleListener = onRecycleListener;
     }
 
-    public void atualizar(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
+    public void atualizar(List<Conta> contaList) {
+        this.contaList = contaList;
         notifyDataSetChanged();
     }
 
@@ -35,7 +35,7 @@ public class UsuarioAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(contexto)
-                .inflate(R.layout.usuario, viewGroup, false);
+                .inflate(R.layout.conta, viewGroup, false);
         ViewHolder holder = new ViewHolder(view, onRecycleListener);
         return holder;
     }
@@ -49,40 +49,31 @@ public class UsuarioAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         ViewHolder holder = (ViewHolder) viewHolder;
 
-        Usuario usuario = usuarioList.get(i);
+        Conta conta = contaList.get(i);
 
-        holder.nome.setText(usuario.getNome());
-        holder.cpf.setText(usuario.getCpf());
-        holder.endereco.setText(usuario.getEndereco());
-        holder.email.setText(usuario.getEmail());
-        holder.telefone.setText(usuario.getTelefone());
-        holder.sexo.setText(usuario.getSexo());
+        holder.nick.setText(conta.getNick());
+        holder.login.setText(conta.getLogin());
+        holder.senha.setText(conta.getSenha());
     }
 
     @Override
     public int getItemCount() {
-        return usuarioList.size();
+        return contaList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        final TextView nome;
-        final TextView cpf;
-        final TextView endereco;
-        final TextView email;
-        final TextView telefone;
-        final TextView sexo;
+        final TextView nick;
+        final TextView login;
+        final TextView senha;
 
         OnRecycleListener onRecycleListener;
 
         public ViewHolder(View view, OnRecycleListener onRecycleListener) {
             super(view);
-            nome = (TextView) view.findViewById(R.id.nome);
-            cpf = (TextView) view.findViewById(R.id.cpf);
-            endereco = (TextView) view.findViewById(R.id.endereco);
-            email = (TextView) view.findViewById(R.id.email);
-            telefone = (TextView) view.findViewById(R.id.telefone);
-            sexo = (TextView) view.findViewById(R.id.sexo);
+            nick = (TextView) view.findViewById(R.id.nick);
+            login = (TextView) view.findViewById(R.id.login);
+            senha = (TextView) view.findViewById(R.id.senha);
 
             this.onRecycleListener = onRecycleListener;
             view.setOnClickListener(this);

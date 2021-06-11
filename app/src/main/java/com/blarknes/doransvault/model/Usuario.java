@@ -6,8 +6,10 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable
 public class Usuario {
 
-    @DatabaseField(allowGeneratedIdInsert=true, generatedId=true)
+    @DatabaseField(allowGeneratedIdInsert = true, generatedId = true)
     private int id;
+
+    //TODO Nick - Login - Senha - LowPrio
 
     @DatabaseField
     private String nome;

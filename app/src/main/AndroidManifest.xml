@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DoransVault">
 
-        <activity android:name=".activity.AdicionarUsuarioActivity"></activity>
-        <activity android:name=".activity.AtualizarUsuarioActivity"></activity>
+        <activity android:name=".activity.AdicionarContaActivity"></activity>
+        <activity android:name=".activity.AtualizarContaActivity"></activity>
 
 
         <activity android:name=".activity.MainActivity">

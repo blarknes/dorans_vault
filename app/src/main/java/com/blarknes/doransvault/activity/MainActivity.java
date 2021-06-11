@@ -10,17 +10,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blarknes.doransvault.DAO.ContaDAO;
 import com.blarknes.doransvault.DAO.DatabaseManager;
-import com.blarknes.doransvault.DAO.UsuarioDAO;
 import com.blarknes.doransvault.R;
-import com.blarknes.doransvault.model.Usuario;
+import com.blarknes.doransvault.model.Conta;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements UsuarioAdapter.OnRecycleListener {
+public class MainActivity extends AppCompatActivity implements ContaAdapter.OnRecycleListener {
 
-    List<Usuario> usuarioList;
-    private static Usuario usuario;
+    List<Conta> contaList;
+    private static Conta conta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity implements UsuarioAdapter.On
     }
 
     private void initGUI() {
-        UsuarioDAO dao = new UsuarioDAO(this);
-        usuarioList = dao.getAll();
+        ContaDAO dao = new ContaDAO(this);
+        contaList = dao.getAll();
 
         RecyclerView recyclerView = findViewById(R.id.recycler);
-        recyclerView.setAdapter(new UsuarioAdapter(usuarioList, this, this));
+        recyclerView.setAdapter(new ContaAdapter(contaList, this, this));
         RecyclerView.LayoutManager layout = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layout);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements UsuarioAdapter.On
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(com.blarknes.doransvault.activity.MainActivity.this, AdicionarUsuarioActivity.class);
+                Intent myIntent = new Intent(com.blarknes.doransvault.activity.MainActivity.this, AdicionarContaActivity.class);
                 startActivity(myIntent);
             }
         });
@@ -58,28 +58,28 @@ public class MainActivity extends AppCompatActivity implements UsuarioAdapter.On
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        UsuarioDAO dao = new UsuarioDAO(this);
-        List<Usuario> usuarioList = dao.getAll();
+        ContaDAO dao = new ContaDAO(this);
+        List<Conta> contaList = dao.getAll();
         RecyclerView recyclerView = findViewById(R.id.recycler);
-        UsuarioAdapter adapter = (UsuarioAdapter) recyclerView.getAdapter();
-        adapter.atualizar(usuarioList);
+        ContaAdapter adapter = (ContaAdapter) recyclerView.getAdapter();
+        adapter.atualizar(contaList);
     }
 
     //CÓDIGO ADICIONADO PARA POSSIBILITAR A ATUALIZAÇÃO DO USUÁRIO
     @Override
     public void onRecycleClick(int position) {
-        this.setUsuario(usuarioList.get(position));
-        Intent myIntent = new Intent(com.blarknes.doransvault.activity.MainActivity.this, AtualizarUsuarioActivity.class);
+        this.setConta(contaList.get(position));
+        Intent myIntent = new Intent(com.blarknes.doransvault.activity.MainActivity.this, AtualizarContaActivity.class);
         startActivity(myIntent);
     }
 
     //CÓDIGO ADICIONADO PARA POSSIBILITAR A ATUALIZAÇÃO DO USUÁRIO
-    public static Usuario getUsuario() {
-        return usuario;
+    public static Conta getConta() {
+        return conta;
     }
 
     //CÓDIGO ADICIONADO PARA POSSIBILITAR A ATUALIZAÇÃO DO USUÁRIO
-    public static void setUsuario(Usuario usuario) {
-        com.blarknes.doransvault.activity.MainActivity.usuario = usuario;
+    public static void setConta(Conta conta) {
+        com.blarknes.doransvault.activity.MainActivity.conta = conta;
     }
 }
