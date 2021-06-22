@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements ContaAdapter.OnRe
     @Override
     public void onRecycleClick(int position) {
         this.setConta(contaList.get(position));
-        Intent myIntent = new Intent(com.blarknes.doransvault.activity.MainActivity.this, AtualizarContaActivity.class);
+        Intent myIntent = new Intent(com.blarknes.doransvault.activity.MainActivity.this, VisualizarContaActivity.class);
         startActivity(myIntent);
     }
 
