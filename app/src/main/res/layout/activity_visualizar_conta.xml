@@ -9,13 +9,14 @@
 
     <TextView
         android:id="@+id/nick"
-        android:layout_width="230dp"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:text="piruzinho123dsaa"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:text="nick"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageIcon"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -23,20 +24,24 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:inputType="text"
         android:text="login"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nick" />
+        app:layout_constraintTop_toBottomOf="@+id/imageIcon" />
 
     <TextView
         android:id="@+id/senha"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textStyle="bold"
+        android:layout_marginTop="4dp"
+        android:inputType="textPassword"
         android:text="senha"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
@@ -44,19 +49,19 @@
         android:layout_width="0dp"
         android:layout_height="0.8dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="76dp"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nick"
+        app:layout_constraintTop_toBottomOf="@+id/senha"
         app:layout_constraintWidth_percent="0.95" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageElo"
         android:layout_width="100dp"
-        android:layout_height="108dp"
+        android:layout_height="100dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,11 +71,11 @@
         app:srcCompat="@drawable/diamond" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/showPassword"
         android:layout_width="23dp"
         android:layout_height="19dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:background="#0000"
         app:layout_constraintStart_toEndOf="@+id/senha"
         app:layout_constraintTop_toBottomOf="@+id/login"
@@ -82,9 +87,32 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="16dp"
+        android:gravity="center"
         android:text="pdl"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageElo" />
+
+    <ImageView
+        android:id="@+id/imageIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profileicon" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="subtitle"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/imageIcon"
+        app:layout_constraintTop_toBottomOf="@+id/nick" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
