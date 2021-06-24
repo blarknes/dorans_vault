@@ -3,7 +3,6 @@ package com.blarknes.doransvault.DAO;
 import android.content.Context;
 
 public class DatabaseManager {
-
     private static com.blarknes.doransvault.DAO.DatabaseManager instance;
     private DataBaseHelper helper;
 

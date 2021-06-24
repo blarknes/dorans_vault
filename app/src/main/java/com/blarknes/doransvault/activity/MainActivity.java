@@ -2,24 +2,18 @@ package com.blarknes.doransvault.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.blarknes.doransvault.DAO.ContaDAO;
 import com.blarknes.doransvault.DAO.DatabaseManager;
 import com.blarknes.doransvault.R;
 import com.blarknes.doransvault.model.Conta;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ContaAdapter.OnRecycleListener {
-
     List<Conta> contaList;
     private static Conta conta;
 
@@ -39,19 +33,15 @@ public class MainActivity extends AppCompatActivity implements ContaAdapter.OnRe
 
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setAdapter(new ContaAdapter(contaList, this, this));
-        RecyclerView.LayoutManager layout = new LinearLayoutManager(this,
-                LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layout);
     }
 
     private void configureActions() {
         FloatingActionButton btnAdicionar = findViewById(R.id.adicionar);
-        btnAdicionar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(com.blarknes.doransvault.activity.MainActivity.this, AdicionarContaActivity.class);
-                startActivity(myIntent);
-            }
+        btnAdicionar.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, AdicionarContaActivity.class);
+            startActivity(myIntent);
         });
     }
 
@@ -66,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements ContaAdapter.OnRe
         adapter.atualizar(contaList);
     }
 
-    //CÓDIGO ADICIONADO PARA POSSIBILITAR A ATUALIZAÇÃO DO USUÁRIO
+    //code for db update
     @Override
     public void onRecycleClick(int position) {
         this.setConta(contaList.get(position));
@@ -74,12 +64,12 @@ public class MainActivity extends AppCompatActivity implements ContaAdapter.OnRe
         startActivity(myIntent);
     }
 
-    //CÓDIGO ADICIONADO PARA POSSIBILITAR A ATUALIZAÇÃO DO USUÁRIO
+    //code for db update
     public static Conta getConta() {
         return conta;
     }
 
-    //CÓDIGO ADICIONADO PARA POSSIBILITAR A ATUALIZAÇÃO DO USUÁRIO
+    //code for db update
     public static void setConta(Conta conta) {
         com.blarknes.doransvault.activity.MainActivity.conta = conta;
     }

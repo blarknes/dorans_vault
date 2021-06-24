@@ -21,6 +21,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Região: "/>
+            <Spinner
+                android:id="@+id/inptRegiao"
+                android:padding="8dp"
+                android:entries="@array/regions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Nick: "/>
             <EditText
                 android:layout_width="match_parent"

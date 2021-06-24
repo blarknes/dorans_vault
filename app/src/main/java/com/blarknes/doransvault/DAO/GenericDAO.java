@@ -1,15 +1,11 @@
 package com.blarknes.doransvault.DAO;
 
-
 import android.content.Context;
-
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
-
 import java.util.List;
 
 public class GenericDAO {
-
     protected Dao dao;
     private Class type;
 

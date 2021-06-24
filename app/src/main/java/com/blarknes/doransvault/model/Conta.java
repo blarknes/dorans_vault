@@ -17,7 +17,11 @@ public class Conta {
     @DatabaseField
     private String senha;
 
-    //TODO LowPrio
+    @DatabaseField
+    private String regiao;
+
+    @DatabaseField
+    private Boolean lowPriority;
 
     public int getId() {
         return id;
@@ -49,5 +53,21 @@ public class Conta {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getRegiao() {
+        return regiao;
+    }
+
+    public void setRegiao(String regiao) {
+        this.regiao = regiao;
+    }
+
+    public Boolean getLowPriority() {
+        return lowPriority;
+    }
+
+    public void setLowPriority(Boolean lowPriority) {
+        this.lowPriority = lowPriority;
     }
 }

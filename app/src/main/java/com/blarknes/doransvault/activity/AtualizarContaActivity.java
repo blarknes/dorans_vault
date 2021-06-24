@@ -6,16 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.blarknes.doransvault.DAO.ContaDAO;
 import com.blarknes.doransvault.R;
 import com.blarknes.doransvault.model.Conta;
 import java.util.List;
 
 public class AtualizarContaActivity extends AppCompatActivity {
-
     List<Conta> contaList;
     Conta conta;
 

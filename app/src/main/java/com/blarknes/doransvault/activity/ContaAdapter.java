@@ -5,17 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.blarknes.doransvault.R;
 import com.blarknes.doransvault.model.Conta;
-
 import java.util.List;
 
 public class ContaAdapter extends RecyclerView.Adapter {
-
     private List<Conta> contaList;
     private Context contexto;
     private OnRecycleListener onRecycleListener;
@@ -34,13 +30,12 @@ public class ContaAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(contexto)
-                .inflate(R.layout.conta, viewGroup, false);
+        View view = LayoutInflater.from(contexto).inflate(R.layout.conta, viewGroup, false);
         ViewHolder holder = new ViewHolder(view, onRecycleListener);
         return holder;
     }
 
-    //CÓDIGO ADICIONADO PARA POSSIBILITAR A ATUALIZAÇÃO DO USUÁRIO
+    //code for db update
     public interface OnRecycleListener{
         void onRecycleClick(int position);
     }
@@ -51,9 +46,9 @@ public class ContaAdapter extends RecyclerView.Adapter {
 
         Conta conta = contaList.get(i);
 
-        holder.nick.setText(conta.getNick());
-        /*holder.login.setText(conta.getLogin());
-        holder.senha.setText(conta.getSenha());*/    }
+        holder.nick.setText(conta.getNick() + " ("+conta.getRegiao()+")");
+        /*holder.login.setText(conta.getLogin());*/
+    }
 
     @Override
     public int getItemCount() {
@@ -63,22 +58,20 @@ public class ContaAdapter extends RecyclerView.Adapter {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         final TextView nick;
-        /*final TextView login;
-        final TextView senha;*/
+        /*final TextView login;*/
 
         OnRecycleListener onRecycleListener;
 
         public ViewHolder(View view, OnRecycleListener onRecycleListener) {
             super(view);
             nick = (TextView) view.findViewById(R.id.nick);
-            /*login = (TextView) view.findViewById(R.id.login);
-            senha = (TextView) view.findViewById(R.id.senha);*/
+            /*login = (TextView) view.findViewById(R.id.login);*/
 
             this.onRecycleListener = onRecycleListener;
             view.setOnClickListener(this);
         }
 
-        //CÓDIGO ADICIONADO PARA POSSIBILITAR A ATUALIZAÇÃO DO USUÁRIO
+        //code for db update
         @Override
         public void onClick(View view) {
             onRecycleListener.onRecycleClick(getAdapterPosition());

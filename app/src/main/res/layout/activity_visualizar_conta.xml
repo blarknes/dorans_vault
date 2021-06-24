@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
-        android:text="piruzinho123dsaa"
+        android:text="nick"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageIcon"
@@ -49,7 +49,7 @@
         android:layout_width="0dp"
         android:layout_height="0.8dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="30dp"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
@@ -68,7 +68,7 @@
         app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toEndOf="@+id/nick"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/diamond" />
+        app:srcCompat="@drawable/elo" />
 
     <ImageButton
         android:id="@+id/showPassword"
@@ -88,7 +88,7 @@
         android:layout_marginTop="7dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:text="pdl"
+        android:text="elo"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageElo" />

@@ -5,30 +5,29 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.InputType;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.blarknes.doransvault.DAO.ContaDAO;
 import com.blarknes.doransvault.R;
 import com.blarknes.doransvault.model.Conta;
-
-import java.io.InputStream;
-import java.util.List;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import java.io.InputStream;
+import java.util.List;
 
 public class VisualizarContaActivity extends AppCompatActivity {
     List<Conta> contaList;
     Conta conta;
     ProgressDialog progressDialog;
-    String url, eloHolder, nickHolder, subtitleHolder;
+    String url, eloHolder, nickHolder, subtitleHolder, region;
     ImageView imgElo, imgIcon;
     TextView nick, login, senha, elo, subtitle;
-    Integer c = 0;
     Bitmap bitmapElo, bitmapIcon;
+    ImageButton showPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +51,19 @@ public class VisualizarContaActivity extends AppCompatActivity {
         imgElo = findViewById(R.id.imageElo);
         imgIcon = findViewById(R.id.imageIcon);
 
+        showPassword = findViewById(R.id.showPassword);
+        showPassword.setOnClickListener(v -> {
+            senha.setInputType(InputType.TYPE_CLASS_TEXT);
+        });
+
         nick.setText(conta.getNick());
         login.setText(conta.getLogin());
         senha.setText(conta.getSenha());
 
-        //TODO INSERT SERVER FURTHER
-        url = "https://www.leagueofgraphs.com/pt/summoner/br/" + nick.getText().toString();
+        region = conta.getRegiao().toLowerCase();
+
+        url = String.format("https://www.leagueofgraphs.com/pt/summoner/%s/%s",
+                region, nick.getText().toString());
 
         final int id = conta.getId();
     }
@@ -99,12 +105,22 @@ public class VisualizarContaActivity extends AppCompatActivity {
                     Element docElo = doc.select("div.leagueTier").first();
                     Element docPdl = doc.select("div.league-points").first();
                     eloHolder = docElo.text() + " - " + docPdl.text().substring(16) + " pdl";
+
+                    if (docElo.text().contains("Desafiante"))
+                        eloHolder = "Desafiante - " + docPdl.text().substring(16) + " pdl";
+                    else if (docElo.text().contains("GrandMaster"))
+                        eloHolder = "Grão-Mestre - " + docPdl.text().substring(16) + " pdl";
+                    else if (docElo.text().contains("Master"))
+                        eloHolder = "Mestre - " + docPdl.text().substring(16) + " pdl";
+
                 } catch (Exception e){
                     eloHolder = "Unranked";
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
+                nickHolder = conta.getNick() + " ("+conta.getRegiao()+")";
+                subtitleHolder = "no data";
+                eloHolder = "no data";
             }
             return null;
         }
@@ -112,11 +128,14 @@ public class VisualizarContaActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
             nick.setText(nickHolder);
+
+            if (bitmapIcon != null)
+                imgIcon.setImageBitmap(bitmapIcon);
+            if (bitmapElo != null)
+                imgElo.setImageBitmap(bitmapElo);
+
             subtitle.setText(subtitleHolder);
-            imgIcon.setImageBitmap(bitmapIcon);
-            imgElo.setImageBitmap(bitmapElo);
             elo.setText(eloHolder);
             progressDialog.dismiss();
         }
