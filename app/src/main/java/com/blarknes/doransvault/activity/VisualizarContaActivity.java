@@ -1,14 +1,22 @@
 package com.blarknes.doransvault.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.blarknes.doransvault.DAO.ContaDAO;
 import com.blarknes.doransvault.R;
@@ -38,6 +46,44 @@ public class VisualizarContaActivity extends AppCompatActivity {
         new InternetTask().execute();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.ellipsis_account_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch(menuItem.getItemId()){
+            case R.id.edit_account:
+                AccountActivityChange(0);
+                return true;
+            case R.id.delete_account:
+                AccountActivityChange(1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
+    }
+
+    private void AccountActivityChange(int activityType){
+        switch(activityType){
+            case 0:
+                //this.setConta(contaList.get(position));
+                Intent myIntent = new Intent(com.blarknes.doransvault.activity.VisualizarContaActivity.this, AtualizarContaActivity.class);
+                startActivity(myIntent);
+                break;
+            case 1:
+                ContaDAO dao = new ContaDAO(com.blarknes.doransvault.activity.VisualizarContaActivity.this);
+                dao.delete(conta);
+                startActivity(new Intent(com.blarknes.doransvault.activity.VisualizarContaActivity.this, MainActivity.class));
+                break;
+            default:
+                break;
+        }
+    }
+
     private void ConfigureActions(){
         ContaDAO dao = new ContaDAO(this);
         contaList = dao.getAll();
@@ -53,7 +99,10 @@ public class VisualizarContaActivity extends AppCompatActivity {
 
         showPassword = findViewById(R.id.showPassword);
         showPassword.setOnClickListener(v -> {
-            senha.setInputType(InputType.TYPE_CLASS_TEXT);
+            if (senha.getTransformationMethod() == null)
+                senha.setTransformationMethod(new PasswordTransformationMethod());
+            else
+                senha.setTransformationMethod(null);
         });
 
         nick.setText(conta.getNick());

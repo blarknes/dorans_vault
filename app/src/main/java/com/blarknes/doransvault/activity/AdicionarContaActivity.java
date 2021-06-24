@@ -48,6 +48,7 @@ public class AdicionarContaActivity extends AppCompatActivity {
                 conta.setLogin(login);
                 conta.setSenha(senha);
                 conta.setRegiao(regiao);
+                conta.setLowPriority(false);
 
                 ContaDAO dao = new ContaDAO(AdicionarContaActivity.this);
                 dao.insert(conta);

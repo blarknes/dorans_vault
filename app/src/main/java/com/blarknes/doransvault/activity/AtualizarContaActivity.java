@@ -40,49 +40,36 @@ public class AtualizarContaActivity extends AppCompatActivity {
         final int id = conta.getId();
 
         Button salvar = findViewById(R.id.btnSalvar);
-        Button excluir = findViewById(R.id.btnExcluir);
 
-        salvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nick = inptNick.getText().toString();
-                String login = inptLogin.getText().toString();
-                String senha = inptSenha.getText().toString();
+        salvar.setOnClickListener(v -> {
+            String nick = inptNick.getText().toString();
+            String login = inptLogin.getText().toString();
+            String senha = inptSenha.getText().toString();
 
-                int aux = 0;
-                //Condições para atualizar o cadastro ao banco de dados;
-                //Verificação do Nome
-                if (nick.equalsIgnoreCase("")) {
-                    Toast.makeText(com.blarknes.doransvault.activity.AtualizarContaActivity.this, "Nome Inválido", Toast.LENGTH_SHORT).show();
-                } else {
-                    aux++;
-                }
-
-                if (aux == 1) {
-                    Conta conta = new Conta();
-
-                    conta.setNick(nick);
-                    conta.setLogin(login);
-                    conta.setSenha(senha);
-                    conta.setId(id);
-
-                    ContaDAO dao = new ContaDAO(com.blarknes.doransvault.activity.AtualizarContaActivity.this);
-                    dao.update(conta);
-
-                    //AtualizarUsuarioActivity.this.finish();
-                    startActivity(new Intent(com.blarknes.doransvault.activity.AtualizarContaActivity.this, MainActivity.class));
-                }
+            int aux = 0;
+            //Condições para atualizar o cadastro ao banco de dados;
+            //Verificação do Nome
+            if (nick.equalsIgnoreCase("")) {
+                Toast.makeText(AtualizarContaActivity.this, "Nome Inválido", Toast.LENGTH_SHORT).show();
+            } else {
+                aux++;
             }
-        });
 
-        excluir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ContaDAO dao = new ContaDAO(com.blarknes.doransvault.activity.AtualizarContaActivity.this);
-                dao.delete(conta);
+            if (aux == 1) {
+                Conta conta = new Conta();
+
+                conta.setNick(nick);
+                conta.setLogin(login);
+                conta.setSenha(senha);
+                conta.setId(id);
+
+                ContaDAO dao1 = new ContaDAO(AtualizarContaActivity.this);
+                dao1.update(conta);
+
                 //AtualizarUsuarioActivity.this.finish();
-                startActivity(new Intent(com.blarknes.doransvault.activity.AtualizarContaActivity.this, MainActivity.class));
+                startActivity(new Intent(AtualizarContaActivity.this, MainActivity.class));
             }
         });
+
     }
 }

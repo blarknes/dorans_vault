@@ -4,9 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.blarknes.doransvault.DAO.ContaDAO;
 import com.blarknes.doransvault.R;
 import com.blarknes.doransvault.model.Conta;
 import java.util.List;
@@ -47,6 +49,18 @@ public class ContaAdapter extends RecyclerView.Adapter {
         Conta conta = contaList.get(i);
 
         holder.nick.setText(conta.getNick() + " ("+conta.getRegiao()+")");
+        try{
+            holder.lowPrio.setChecked(conta.getLowPriority());
+        } catch (Exception e) {
+            holder.lowPrio.setChecked(false);
+        }
+
+        holder.lowPrio.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            conta.setLowPriority(true);
+            ContaDAO dao = new ContaDAO(contexto);
+            dao.update(conta);
+        });
+
         /*holder.login.setText(conta.getLogin());*/
     }
 
@@ -56,8 +70,8 @@ public class ContaAdapter extends RecyclerView.Adapter {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
         final TextView nick;
+        final Switch lowPrio;
         /*final TextView login;*/
 
         OnRecycleListener onRecycleListener;
@@ -65,6 +79,7 @@ public class ContaAdapter extends RecyclerView.Adapter {
         public ViewHolder(View view, OnRecycleListener onRecycleListener) {
             super(view);
             nick = (TextView) view.findViewById(R.id.nick);
+            lowPrio = (Switch) view.findViewById(R.id.switch1);
             /*login = (TextView) view.findViewById(R.id.login);*/
 
             this.onRecycleListener = onRecycleListener;
