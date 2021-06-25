@@ -60,18 +60,31 @@
                 android:id="@+id/inptSenha"/>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Região: " />
+
+            <Spinner
+                android:id="@+id/inptRegiao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/regions"
+                android:padding="8dp" />
+
+        </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnSalvar"
             android:text="Salvar"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:id="@+id/btnExcluir"
-            android:text="Excluir"/>
 
     </LinearLayout>
 

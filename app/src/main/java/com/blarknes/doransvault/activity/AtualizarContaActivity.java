@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.blarknes.doransvault.DAO.ContaDAO;
@@ -32,12 +33,17 @@ public class AtualizarContaActivity extends AppCompatActivity {
         final EditText inptNick = findViewById(R.id.inptNick);
         final EditText inptLogin = findViewById(R.id.inptLogin);
         final EditText inptSenha = findViewById(R.id.inptSenha);
+        final Spinner inptRegiao = findViewById(R.id.inptRegiao);
 
         inptNick.setText(conta.getNick());
         inptLogin.setText(conta.getLogin());
         inptSenha.setText(conta.getSenha());
 
+        inptRegiao.setSelection(getIndex(inptRegiao, conta.getRegiao()));
+
         final int id = conta.getId();
+
+        final boolean lowPriority = conta.getLowPriority();
 
         Button salvar = findViewById(R.id.btnSalvar);
 
@@ -61,6 +67,8 @@ public class AtualizarContaActivity extends AppCompatActivity {
                 conta.setNick(nick);
                 conta.setLogin(login);
                 conta.setSenha(senha);
+                conta.setRegiao(inptRegiao.getSelectedItem().toString());
+                conta.setLowPriority(lowPriority);
                 conta.setId(id);
 
                 ContaDAO dao1 = new ContaDAO(AtualizarContaActivity.this);
@@ -71,5 +79,13 @@ public class AtualizarContaActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private int getIndex(Spinner spinner, String myString){
+        int index = 0;
+        for (int i = 0; i < spinner.getCount(); i++){
+            if (spinner.getItemAtPosition(i).equals(myString))
+                index = i;
+        }
+        return index;
     }
 }
