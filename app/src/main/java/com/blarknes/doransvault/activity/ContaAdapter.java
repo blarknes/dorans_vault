@@ -56,7 +56,11 @@ public class ContaAdapter extends RecyclerView.Adapter {
         }
 
         holder.lowPrio.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            conta.setLowPriority(true);
+            if (isChecked)
+                conta.setLowPriority(true);
+            else
+                conta.setLowPriority(false);
+
             ContaDAO dao = new ContaDAO(contexto);
             dao.update(conta);
         });
