@@ -10,4 +10,9 @@
         android:title="Excluir Conta"
         app:showAsAction="never"/>
 
+    <item android:id = "@+id/refresh_account"
+        android:title="Excluir Conta"
+        android:icon="@drawable/ic_baseline_refresh_24"
+        app:showAsAction="always"/>
+
 </menu>
