@@ -10,7 +10,7 @@
         android:id="@+id/imageEloFlex"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="22dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageElo"
@@ -28,6 +28,19 @@
         app:layout_constraintEnd_toEndOf="@+id/imageEloFlex"
         app:layout_constraintStart_toStartOf="@+id/imageEloFlex"
         app:layout_constraintTop_toBottomOf="@+id/imageEloFlex" />
+
+    <TextView
+        android:id="@+id/rankedFlex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Flex"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageEloFlex"
+        app:layout_constraintEnd_toEndOf="@+id/imageEloFlex"
+        app:layout_constraintStart_toStartOf="@+id/imageEloFlex" />
 
     <ImageView
         android:id="@+id/imageBanner"
@@ -108,7 +121,7 @@
         android:id="@+id/imageElo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="22dp"
         app:layout_constraintEnd_toStartOf="@+id/imageEloFlex"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,6 +139,19 @@
         app:layout_constraintEnd_toEndOf="@+id/imageElo"
         app:layout_constraintStart_toStartOf="@+id/imageElo"
         app:layout_constraintTop_toBottomOf="@+id/imageElo" />
+
+    <TextView
+        android:id="@+id/rankedSolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Solo/Duo"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageElo"
+        app:layout_constraintEnd_toEndOf="@+id/imageElo"
+        app:layout_constraintStart_toStartOf="@+id/imageElo" />
 
     <ImageButton
         android:id="@+id/showPassword"
@@ -183,5 +209,17 @@
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/showPassword"
         app:layout_constraintTop_toBottomOf="@+id/login" />
+
+    <TextView
+        android:id="@+id/decayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/showPassword"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
